@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | MAVSBS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f1e6;
+      color: #333;
+    }
+    header {
+      background: #4b2e1e;
+      color: white;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .section {
+      padding: 70px 10%;
+      text-align: center;
+    }
+    .contact-box {
+      background: #fff;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 8px;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    footer {
+      background: #2e5e3e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #c76b29;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>MAVSBS</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="programs.html">Programs</a>
+    <a href="impact.html">Impact</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="donate.html">Donate</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="section">
+  <h1>संपर्क करा | Contact Us</h1>
+  <p>आपल्याला काही प्रश्न असल्यास किंवा सहकार्य करायचे असल्यास आमच्याशी संपर्क साधा.</p>
+</section>
+
+<section class="section">
+  <div class="contact-box">
+    <h2>पत्ता | Address</h2>
+    <p>नागझरी रोड, वार्ड नं. २२, शेगांव, जि. बुलडाणा, महाराष्ट्र</p>
+
+    <h2>फोन | Phone</h2>
+    <p>+91-9850347638, +91-9922668156</p>
+
+    <h2>ईमेल | Email</h2>
+    <p>info@yourngo.org</p>
+  </div>
+</section>
+
+<section class="section" style="background:#fff;">
+  <h2>Feedback Form</h2>
+  <form>
+    <input type="text" placeholder="आपले नाव | Your Name" required>
+    <input type="email" placeholder="आपला ईमेल | Your Email" required>
+    <textarea rows="5" placeholder="आपला संदेश | Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2026 MAVSBS Tribal Education Model | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>
