@@ -1,92 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gallery | MAVSBS</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f5f1e6;
-      color: #333;
-    }
-    header {
-      background: #4b2e1e;
-      color: white;
-      padding: 20px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .section {
-      padding: 70px 10%;
-      text-align: center;
-    }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    footer {
-      background: #2e5e3e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<header>
-  <h2>MAVSBS</h2>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="programs.html">Programs</a>
-    <a href="impact.html">Impact</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="donate.html">Donate</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<section class="section">
-  <h1>गॅलरी | Gallery</h1>
-  <p>आमच्या उपक्रमांचे फोटो आणि व्हिडिओ येथे पाहू शकता.</p>
-</section>
-
-<section class="section">
-  <div class="gallery-grid">
-    <img src="assets/images/gallery1.jpg" alt="Bal Sanskar Kendra Activity">
-    <img src="assets/images/gallery2.jpg" alt="Women Empowerment Workshop">
-    <img src="assets/images/gallery3.jpg" alt="Health Camp">
-    <img src="assets/images/gallery4.jpg" alt="Student Learning Session">
-  </div>
-</section>
-
-<section class="section" style="background:#fff;">
-  <h2>YouTube Videos</h2>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" 
-          title="YouTube video player" frameborder="0" allowfullscreen></iframe>
-</section>
-
-<footer>
-  <p>© 2026 MAVSBS Tribal Education Model | All Rights Reserved</p>
-  <p>Contact: info@yourngo.org | Phone: +91-9850347638</p>
-</footer>
-
+    <header>
+        <h1>Gallery</h1>
+    </header>
+    <main>
+        <section class="gallery">
+            <h2>Photo Gallery</h2>
+            <div class="filters">
+                <button data-filter="*">Show All</button>
+                <button data-filter=".nature">Nature</button>
+                <button data-filter=".architecture">Architecture</button>
+            </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item nature">
+                    <a href="images/nature1.jpg" data-lightbox="gallery" aria-label="View nature image 1">
+                        <img src="images/nature1.jpg" alt="Beautiful nature scenery" loading="lazy">
+                    </a>
+                    <figcaption>Nature Image 1</figcaption>
+                </figure>
+                <figure class="gallery-item architecture">
+                    <a href="images/architecture1.jpg" data-lightbox="gallery" aria-label="View architecture image 1">
+                        <img src="images/architecture1.jpg" alt="Stunning architecture example" loading="lazy">
+                    </a>
+                    <figcaption>Architecture Image 1</figcaption>
+                </figure>
+                <!-- More images can be added similarly -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026 Gallery. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
-</html>
+</html>/* ====================================
+   GALLERY STYLESHEET
+   Mobile-First Responsive Design
+   ==================================== */
+
+:root {
+  --color-primary: #4b2e1e;
+  --color-secondary: #2e5e3e;
+  --color-accent: #d4a574;
+  --color-light: #f5f1e6;
+  --color-dark: #333;
+  --color-white: #fff;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --transition: all 0.3s ease-in-out;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  line-height: 1.6;
+}
+
+/* ====================================
+   HEADER STYLES
+   ==================================== */
+header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #5a3a28 100%);
+  color: var(--color-white);
+  padding: var(--spacing-lg) var(--spacing-md);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+nav a {
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-accent);
+}
+
+nav a:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ====================================
+   MAIN CONTENT
+   ==================================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+/* Gallery Introduction */
+.gallery-intro {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.gallery-intro h2 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  font-weight: 700;
+}
+
+.gallery-intro p {
+  font-size: 1rem;
+  color: var(--color-dark);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.8;
+}
+
+/* ====================================
+   FILTER CONTROLS
+   ==================================== */
+.filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xl);
+}
+
+.filter-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.filter-btn:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ====================================
+   GALLERY GRID
+   ==================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  animation: fadeIn 0.5s ease-in;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+/* ====================================
+   GALLERY ITEMS
+   ==================================== */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-item:focus-within {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition);
+}
+
+.gallery-item a {
+  text-decoration: none;
+  display: block;
+  position: relative;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.9);
+}
+
+figcaption {
+  padding: var(--spacing-md);
+  background-color: var(--color-white);
+}
+
+figcaption h3 {
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 600;
+}
+
+figcaption p {
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+/* ====================================
+   LIGHTBOX STYLES
+   ==================================== */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 1000;
+  padding: var(--spacing-md);
+  animation: fadeIn 0.3s ease-in;
+  overflow-y: auto;
+}
+
+.lightbox.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  transform: scale(1.2);
+  outline: none;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.lightbox-prev {
+  left: var(--spacing-md);
+}
+
+.lightbox-next {
+  right: var(--spacing-md);
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus {
+  background-color: rgba(255, 255, 255, 0.4);
+  outline: none;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-info {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-white);
+  text-align: center;
+  width: 100%;
+}
+
+.lightbox-info h2 {
+  font-size: 1rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+/* ====================================
+   FOOTER STYLES
+   ==================================== */
+footer {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+footer p {
+  margin: var(--spacing-xs) 0;
+}
+
+/* ====================================
+   ANIMATIONS
+   ==================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ====================================
+   ACCESSIBILITY
+   ==================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Focus visible for all interactive elements */
+a:focus,
+button:focus {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ====================================
+   RESPONSIVE ADJUSTMENTS
+   ==================================== */
+@media (max-width: 768px) {
+  header {
+    padding: var(--spacing-md);
+  }
+
+  header h1 {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  nav ul {
+    gap: var(--spacing-sm);
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  main {
+    padding: var(--spacing-md);
+  }
+
+  .lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    padding: var(--spacing-xs);
+  }
+
+  .lightbox-close {
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: var(--spacing-md);
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  nav ul {
+    gap: var(--spacing-xs);
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  .filter-controls {
+    gap: var(--spacing-xs);
+  }
+
+  .filter-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.8rem;
+  }
+
+  .lightbox-image {
+    max-width: 95vw;
+    max-height: 70vh;
+  }
+
+  .lightbox-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    padding: 0.25rem;
+  }
+
+  .lightbox-prev {
+    left: var(--spacing-sm);
+  }
+
+  .lightbox-next {
+    right: var(--spacing-sm);
+  }
+}
+
+/* ====================================
+   DARK MODE SUPPORT
+   ==================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-light: #1a1a1a;
+    --color-dark: #f0f0f0;
+    --color-white: #2a2a2a;
+  }
+
+  body {
+    background-color: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  .gallery-item {
+    background-color: var(--color-white);
+  }
+
+  figcaption {
+    background-color: var(--color-white);
+  }
+}
+
+/* ====================================
+   PRINT STYLES
+   ==================================== */
+@media print {
+  header,
+  footer,
+  .filter-controls {
+    display: none;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-item {
+    page-break-inside: avoid;
+  }
+}
